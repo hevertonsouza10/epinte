@@ -1,0 +1,152 @@
+@font-face {
+  font-family: "Gotham Epinte";
+  src: url("../assets/Gotham-Medium.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mansalva";
+  src: url("../assets/Mansalva-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --ink: #272727;
+  --paper: #f3efe5;
+  --white: #fffdf8;
+  --blue: #29a8e8;
+  --yellow: #ffcf00;
+  --red: #ff494d;
+  --green: #73c55b;
+  --pink: #ff91c4;
+  --orange: #ff8338;
+  --purple: #a839d4;
+  --radius: 2rem;
+  --edge: clamp(1rem, 3vw, 3.5rem);
+  --display: "Gotham Epinte", Arial, sans-serif;
+  --hand: "Mansalva", cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--display);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(3.2rem, 7vw, 8.5rem);
+  line-height: .88;
+  letter-spacing: -.075em;
+  font-weight: 500;
+}
+
+h2 em {
+  color: var(--red);
+  font-family: var(--hand);
+  font-size: 1.18em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -.03em;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  min-height: 3.5rem;
+  padding: 0 1.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--yellow);
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  transition: color .25s ease, background .25s ease, transform .25s ease;
+}
+
+.button span {
+  font-size: 1.2rem;
+}
+
+.button:hover {
+  color: var(--white);
+  background: var(--ink);
+}
+
+.button--large {
+  min-height: 5.2rem;
+  padding-inline: 2.5rem;
+  background: var(--paper);
+  font-size: .85rem;
+}
+
+.section-index {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: 2.5rem;
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.section-index span {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  place-items: center;
+  font-size: .55rem;
+}
+
+.section-index--light {
+  color: var(--white);
+}
+
+.grain {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  opacity: .075;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}

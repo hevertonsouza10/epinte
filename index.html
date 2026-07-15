@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3efe5">
+  <meta name="description" content="Epinte: peças para crianças pintarem, criarem e transformarem o próprio mundo.">
+  <title>Epinte — Pinte seu mundo</title>
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="loader" aria-hidden="true">
+    <div class="loader__scene">
+      <div class="loader__paint loader__paint--one"></div>
+      <div class="loader__paint loader__paint--two"></div>
+      <img src="assets/mascote.png" alt="">
+      <span class="loader__brush"></span>
+    </div>
+    <div class="loader__copy">
+      <p>O Pingo está preparando as cores...</p>
+      <div class="loader__bar"><i></i></div>
+    </div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor" aria-hidden="true"><span></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" data-reveal>
+    <a class="brand" href="#inicio" aria-label="Epinte, início">
+      <img src="assets/logo.png" alt="Epinte - Pinte seu mundo">
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#pecas">Coleções</a>
+      <a href="#onde-comprar">Onde comprar</a>
+      <a href="#atacado">Atacado</a>
+      <a href="#quem-somos">Quem somos</a>
+    </nav>
+    <a class="button button--small magnetic" href="#contato">Quero pintar <span>↗</span></a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__eyebrow" data-reveal>
+        <span class="spark">✦</span>
+        Para mãos pequenas e ideias gigantes
+      </div>
+
+      <div class="hero__title" aria-label="Um mundo inteiro para colorir">
+        <div class="title-line title-line--one">
+          <span data-word>Um</span>
+          <span class="scribble scribble--blue" data-word>mundo</span>
+        </div>
+        <div class="title-line title-line--two">
+          <span data-word>inteiro</span>
+          <span class="paint-word" data-word data-paint-word>para</span>
+        </div>
+        <div class="title-line title-line--three">
+          <span class="scribble scribble--red" data-word>colorir.</span>
+          <a class="hero__play magnetic" href="#universo" aria-label="Descobrir a Epinte">
+            <span>descubra</span>
+            <b>↓</b>
+          </a>
+        </div>
+      </div>
+
+      <figure class="hero__product-photo" data-reveal>
+        <img src="assets/photos/educadora-pintando-letra.jpeg" alt="Peça tridimensional em EPS sendo pintada">
+        <figcaption><span>É isso que a gente faz:</span><b>peças em EPS prontas para ganhar cor.</b></figcaption>
+      </figure>
+
+      <div class="hero__footer" data-reveal>
+        <p>Silhuetas tridimensionais em EPS, prontas para pintar, criar e dizer: <strong>eu que fiz.</strong></p>
+        <div class="hero__note">
+          <span>01</span>
+          <p>Role para<br>começar a pintar</p>
+        </div>
+      </div>
+
+      <div class="floating-shape floating-shape--a" aria-hidden="true">✿</div>
+      <div class="floating-shape floating-shape--b" aria-hidden="true">●</div>
+      <div class="floating-shape floating-shape--c" aria-hidden="true">✦</div>
+      <img class="hero__mascot" src="assets/mascote.png" alt="" aria-hidden="true">
+    </section>
+
+    <section class="quick-buy" id="comprar" aria-label="Formas de comprar">
+      <div class="quick-buy__intro" data-reveal>
+        <span>Gostou do que viu?</span>
+        <h2>Escolha como<br><em>comprar.</em></h2>
+      </div>
+      <a class="quick-buy__card quick-buy__card--direct" href="#contato" data-reveal>
+        <span>01 / Grandes quantidades</span>
+        <h3>Comprar no atacado</h3>
+        <p>Para lojas, escolas, eventos, hotéis e oficinas.</p>
+        <b>Solicitar proposta ↗</b>
+      </a>
+      <a class="quick-buy__card quick-buy__card--partners" href="#onde-comprar" data-reveal>
+        <span>02 / Compra unitária</span>
+        <h3>Comprar com parceiros</h3>
+        <p>Encontre peças e kits nos nossos canais parceiros.</p>
+        <b>Ver onde comprar ↗</b>
+      </a>
+    </section>
+
+    <section class="brand-film" aria-label="Vídeo principal Epinte">
+      <div class="brand-film__head">
+        <div class="section-index section-index--light" data-reveal><span>01</span> Epinte em movimento</div>
+        <p data-reveal>A melhor parte não é a peça pronta.<br>É tudo que acontece enquanto ela ganha cor.</p>
+      </div>
+      <div class="brand-film__frame" data-reveal>
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/photos/crianca-pintando-cachorro.jpeg">
+          <source src="assets/videos/epinte-oficina-01.mp4" type="video/mp4">
+        </video>
+        <button class="film-toggle" type="button" aria-label="Pausar vídeo"><span>pausar</span><b>Ⅱ</b></button>
+        <a class="film-whatsapp magnetic" href="#contato"><span>Chame<br>no Whats</span><b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="manifesto" id="universo">
+      <div class="section-index" data-reveal><span>02</span> A ideia</div>
+      <p class="manifesto__lead" data-split>
+        Antes de ser um elefante azul, um foguete rosa ou a letra mais bonita do nome, é só uma peça esperando uma ideia.
+      </p>
+      <div class="manifesto__aside" data-reveal>
+        <div class="round-stamp">
+          <span>feito para imaginar • feito para imaginar • </span>
+          <b>e.</b>
+        </div>
+        <p>Não existe certo ou errado. Existe o mundo do jeitinho de cada criança.</p>
+      </div>
+    </section>
+
+    <section class="paint-lab" aria-label="Experiência interativa de pintura">
+      <div class="paint-lab__copy">
+        <div class="section-index section-index--light"><span>03</span> Toque de cor</div>
+        <h2 data-reveal>Sinta a peça<br>ganhar <em>vida.</em></h2>
+        <p data-reveal>Escolha uma cor e pinte a silhueta em EPS. A textura, o relevo e cada gesto fazem a obra ser só sua.</p>
+        <div class="palette" role="group" aria-label="Escolha uma cor">
+          <button class="color active" style="--swatch:#29a8e8" data-color="#29a8e8" aria-label="Azul"></button>
+          <button class="color" style="--swatch:#ffcf00" data-color="#ffcf00" aria-label="Amarelo"></button>
+          <button class="color" style="--swatch:#ff494d" data-color="#ff494d" aria-label="Vermelho"></button>
+          <button class="color" style="--swatch:#73c55b" data-color="#73c55b" aria-label="Verde"></button>
+          <button class="color" style="--swatch:#ff91c4" data-color="#ff91c4" aria-label="Rosa"></button>
+        </div>
+        <button class="reset-paint" type="button">Limpar a peça ↺</button>
+      </div>
+      <div class="paint-lab__stage">
+        <div class="paint-card">
+          <canvas id="paintCanvas" aria-label="Peça de elefante para pintar"></canvas>
+          <div class="paint-card__label"><span>Arraste o pincel pela peça</span><b>EPS Lab / Elefante</b></div>
+        </div>
+        <span class="paint-splat paint-splat--one"></span>
+        <span class="paint-splat paint-splat--two"></span>
+      </div>
+    </section>
+
+    <section class="pieces" id="pecas">
+      <div class="pieces__head">
+        <div>
+          <div class="section-index" data-reveal><span>04</span> Comece por uma coleção</div>
+          <h2 data-reveal>O que faz os olhos<br>deles <em>brilharem?</em></h2>
+        </div>
+        <p data-reveal>Organizamos as peças por interesses para você encontrar mais rápido o tema perfeito para cada criança, aula ou oficina.</p>
+      </div>
+
+      <div class="piece-grid">
+        <article class="piece-card piece-card--blue" data-reveal data-collection-card="animais" role="button" tabindex="0" aria-label="Abrir coleção de animais">
+          <div class="piece-card__meta"><span>01</span><b data-collection-name>Coleção de animais</b><i data-collection-count>04 modelos</i></div>
+          <div class="collection-preview" data-collection-preview aria-hidden="true"></div>
+          <p class="piece-card__description" data-collection-description></p>
+          <span class="collection-trigger">Ver coleção <span>↗</span></span>
+        </article>
+        <article class="piece-card piece-card--yellow" data-reveal data-collection-card="pedagogico" role="button" tabindex="0" aria-label="Abrir coleção de letras e números">
+          <div class="piece-card__meta"><span>02</span><b data-collection-name>Coleção de letras e números</b><i data-collection-count>03 kits</i></div>
+          <div class="collection-preview" data-collection-preview aria-hidden="true"></div>
+          <p class="piece-card__description" data-collection-description></p>
+          <span class="collection-trigger">Ver coleção <span>↗</span></span>
+        </article>
+        <article class="piece-card piece-card--pink" data-reveal data-collection-card="aventura" role="button" tabindex="0" aria-label="Abrir coleção imaginação e aventura">
+          <div class="piece-card__meta"><span>03</span><b data-collection-name>Coleção imaginação e aventura</b><i data-collection-count>01 modelo</i></div>
+          <div class="collection-preview" data-collection-preview aria-hidden="true"></div>
+          <p class="piece-card__description" data-collection-description></p>
+          <span class="collection-trigger">Ver coleção <span>↗</span></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="buy-path" id="onde-comprar">
+      <div class="buy-path__head">
+        <div class="section-index" data-reveal><span>06</span> Onde comprar</div>
+        <h2 data-reveal>Da ideia até<br>a sua <em>mesa.</em></h2>
+        <p data-reveal>Escolha uma coleção, encontre sua peça preferida e compre pelo canal que combina com você.</p>
+      </div>
+      <div class="buy-path__flow">
+        <div class="buy-step" data-reveal>
+          <span>01 / Escolha a coleção</span>
+          <div class="buy-step__shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <b>Fauna, aventura, letras e números</b>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="buy-step buy-step--selected" data-reveal>
+          <span>02 / Encontre a peça</span>
+          <img src="assets/products/rex.png" alt="Dinossauro Rex em EPS">
+          <b>Pronta para receber a imaginação</b>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="buy-step buy-step--channels" data-reveal>
+          <span>03 / Compre com a Epinte</span>
+          <a href="#contato">Compra direta <b>↗</b></a>
+          <a href="#contato">Kits e encomendas <b>↗</b></a>
+          <a href="#contato">Encontrar parceiros <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps" id="como-funciona">
+      <div class="steps__intro">
+        <div class="section-index section-index--light" data-reveal><span>07</span> Como a magia acontece</div>
+        <h2 data-reveal>Três passos.<br>Infinitos <em>mundos.</em></h2>
+      </div>
+      <div class="steps__list">
+        <article data-reveal>
+          <span>01</span>
+          <div class="step-icon">☝</div>
+          <h3>Escolha</h3>
+          <p>Encontre a peça que faz os olhos brilharem.</p>
+        </article>
+        <article data-reveal>
+          <span>02</span>
+          <div class="step-icon">✎</div>
+          <h3>Pinte</h3>
+          <p>Misture cores, invente histórias e suje as mãos.</p>
+        </article>
+        <article data-reveal>
+          <span>03</span>
+          <div class="step-icon">★</div>
+          <h3>Se orgulhe</h3>
+          <p>Uma peça única, feita por uma pessoa única.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="solutions" id="solucoes">
+      <div class="solutions__head">
+        <div class="section-index" data-reveal><span>08</span> Escolha seu caminho</div>
+        <h2 data-reveal>Como a Epinte<br>entra no seu <em>mundo?</em></h2>
+      </div>
+      <div class="solution-grid">
+        <article class="solution-card solution-card--family" data-reveal>
+          <span>01 / Famílias</span>
+          <h3>Uma tarde longe das telas.</h3>
+          <p>Kits prontos para brincar, criar memórias e transformar qualquer cantinho em ateliê.</p>
+          <a href="#contato">Conhecer os kits <b>↗</b></a>
+        </article>
+        <article class="solution-card solution-card--school" data-reveal>
+          <span>02 / Escolas</span>
+          <h3>Aprendizado que dá para tocar.</h3>
+          <p>Letras, números, fauna e temas sob medida para alfabetização e projetos pedagógicos.</p>
+          <a href="#contato">Falar sobre sua escola <b>↗</b></a>
+        </article>
+        <article class="solution-card solution-card--events" data-reveal>
+          <span>03 / Eventos & atacado</span>
+          <h3>Uma experiência que vira lembrança.</h3>
+          <p>Lotes de 20, 50 ou 100 peças para oficinas, buffets, hotéis, shoppings e ações de marca.</p>
+          <a href="#contato">Pedir proposta comercial <b>↗</b></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="wholesale" id="atacado">
+      <div class="wholesale__visual" data-reveal>
+        <div class="wholesale__number">20<span>+</span></div>
+        <p>peças por lote</p>
+        <div class="wholesale__stack" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="wholesale__copy">
+        <div class="section-index section-index--light" data-reveal><span>09</span> Atacado & revenda</div>
+        <h2 data-reveal>Cor que encanta.<br>Produto que <em>gira.</em></h2>
+        <p data-reveal>Para lojas, buffets, hotéis, escolas e produtores de eventos. Trabalhamos com lotes de 20, 50 ou 100 peças, mix de tamanhos e projetos personalizados.</p>
+        <ul data-reveal>
+          <li><span>01</span> Condições para volume e recorrência</li>
+          <li><span>02</span> Coleções temáticas e cortes exclusivos</li>
+          <li><span>03</span> Kits prontos para oficinas e ações</li>
+        </ul>
+        <a class="button button--large magnetic" href="#contato">Receber proposta comercial <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="promise" id="porque-epinte">
+      <div class="promise__image" data-reveal>
+        <div class="mascot-orbit"><span>criatividade • autonomia • diversão • </span></div>
+        <img src="assets/mascote.png" alt="Mascote Epinte, uma paleta de pintura sorridente">
+      </div>
+      <div class="promise__copy">
+        <div class="section-index" data-reveal><span>10</span> Mais criatividade. Menos tela.</div>
+        <h2 data-reveal>Enquanto eles pintam, algo lindo acontece.</h2>
+        <div class="promise__items">
+          <div data-reveal><span>01</span><p><strong>Coordenação e foco</strong> em uma experiência tridimensional.</p></div>
+          <div data-reveal><span>02</span><p><strong>Ultra leve e seguro</strong>, sem pontas ou arestas cortantes.</p></div>
+          <div data-reveal><span>03</span><p><strong>100% reciclável</strong>, não tóxico e antimofo.</p></div>
+          <div data-reveal><span>04</span><p><strong>Superfície versátil</strong> para tinta, canetinha e colagem.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="real-life">
+      <div class="real-life__copy">
+        <div class="section-index section-index--light" data-reveal><span>11</span> Acontece de verdade</div>
+        <h2 data-reveal>Cor na mão.<br>Orgulho no <em>olhar.</em></h2>
+        <p data-reveal>A experiência começa com uma peça em branco e termina com uma história que só aquela criança poderia criar.</p>
+      </div>
+      <figure class="real-photo real-photo--main" data-reveal>
+        <img src="assets/photos/crianca-pintando-cachorro.jpeg" alt="Criança pintando uma peça de cachorro Epinte">
+        <figcaption>Imaginação em andamento</figcaption>
+      </figure>
+      <figure class="real-photo real-photo--small" data-reveal>
+        <img src="assets/photos/oficina-real.png" alt="Crianças participando de uma oficina real de pintura">
+        <figcaption>Oficinas que engajam</figcaption>
+      </figure>
+    </section>
+
+    <section class="about" id="quem-somos">
+      <div class="about__copy">
+        <div class="section-index" data-reveal><span>12</span> Quem somos</div>
+        <h2 data-reveal>A gente acredita que toda criança nasce <em>artista.</em></h2>
+        <p data-reveal>A Epinte transforma EPS de alta densidade em telas tridimensionais seguras, leves e cheias de possibilidade. Criamos para aproximar crianças da arte, apoiar educadores e tornar eventos mais memoráveis.</p>
+        <div class="about__facts">
+          <div data-reveal><b>100%</b><span>reciclável</span></div>
+          <div data-reveal><b>3D</b><span>aprendizado tátil</span></div>
+          <div data-reveal><b>∞</b><span>formas de criar</span></div>
+        </div>
+      </div>
+      <div class="about__media" data-reveal>
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/photos/educadora-pintando-letra.jpeg">
+          <source src="assets/videos/epinte-oficina-02.mp4" type="video/mp4">
+        </video>
+        <span>Feito para mãos pequenas<br>e ideias gigantes.</span>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="faq__head">
+        <div class="section-index" data-reveal><span>13</span> Perguntas frequentes</div>
+        <h2 data-reveal>Antes de pintar,<br>pode <em>perguntar.</em></h2>
+      </div>
+      <div class="faq__list">
+        <details data-reveal>
+          <summary>Quais materiais podem ser usados nas peças?<span>+</span></summary>
+          <p>Tinta guache, tinta acrílica à base d'água, canetinhas, glitter, tecidos e outros materiais leves de colagem.</p>
+        </details>
+        <details data-reveal>
+          <summary>As peças são seguras para crianças?<span>+</span></summary>
+          <p>Sim. O EPS é ultraleve, não tóxico e nossas silhuetas não possuem pontas ou arestas cortantes.</p>
+        </details>
+        <details data-reveal>
+          <summary>Vocês fazem modelos e tamanhos personalizados?<span>+</span></summary>
+          <p>Sim. Desenvolvemos cortes personalizados para escolas, eventos, empresas e pedidos em volume.</p>
+        </details>
+        <details data-reveal>
+          <summary>Como funcionam os pedidos para atacado?<span>+</span></summary>
+          <p>Montamos lotes de 20, 50 ou 100 peças, com possibilidade de mix de temas, tamanhos e kits completos.</p>
+        </details>
+        <details data-reveal>
+          <summary>O material é sustentável?<span>+</span></summary>
+          <p>Sim. O EPS usado pela Epinte é 100% reciclável, não tóxico e antimofo.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contato">
+      <div class="contact-section__copy">
+        <div class="section-index" data-reveal><span>14</span> Fale com a gente</div>
+        <p class="contact-section__eyebrow" data-reveal>Uma ideia, um evento ou muitas peças?</p>
+        <h2 data-reveal>Entre em<br><em>contato.</em></h2>
+        <p class="contact-section__intro" data-reveal>Conte o que você deseja criar. A gente ajuda a escolher formatos, quantidades e o melhor caminho para tirar a ideia do papel.</p>
+
+        <div class="contact-list">
+          <a href="https://www.google.com/maps/search/?api=1&query=RS-287%205680%20Montenegro%20RS" target="_blank" rel="noopener" data-reveal>
+            <span aria-hidden="true">⌖</span>
+            <div><b>Onde estamos</b><p>RS-287, nº 5680 · Montenegro/RS</p></div>
+            <i>↗</i>
+          </a>
+          <a href="mailto:epinte@epinte.com.br" data-reveal>
+            <span aria-hidden="true">@</span>
+            <div><b>E-mail comercial</b><p>epinte@epinte.com.br</p></div>
+            <i>↗</i>
+          </a>
+          <div class="contact-list__item" data-reveal>
+            <span aria-hidden="true">◷</span>
+            <div><b>Horário de atendimento</b><p>Segunda a sexta · 8h às 18h</p></div>
+          </div>
+        </div>
+
+        <div class="contact-section__actions" data-reveal>
+          <a class="button magnetic" href="https://wa.me/" target="_blank" rel="noopener">Chamar no WhatsApp <span>↗</span></a>
+          <a class="contact-section__social" href="#" aria-label="Instagram da Epinte">Instagram ↗</a>
+        </div>
+      </div>
+
+      <div class="contact-map" data-reveal>
+        <div class="contact-map__label">
+          <img src="assets/logo.png" alt="">
+          <p><b>Epinte + Isotan</b><span>Mais de 10 anos transformando ideias.</span></p>
+        </div>
+        <iframe
+          title="Localização da Epinte em Montenegro, Rio Grande do Sul"
+          src="https://www.google.com/maps?q=RS-287%205680%20Montenegro%20RS&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+        <a href="https://www.google.com/maps/search/?api=1&query=RS-287%205680%20Montenegro%20RS" target="_blank" rel="noopener">Abrir rota no Google Maps <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="final-cta__scribble" aria-hidden="true"></div>
+      <p data-reveal>Para casa, escola, evento ou o seu negócio</p>
+      <h2 data-reveal>Então, bora<br><em>pintar o mundo?</em></h2>
+      <a class="button button--large magnetic" href="https://wa.me/" target="_blank" rel="noopener">
+        Pedir uma proposta <span>↗</span>
+      </a>
+      <div class="final-cta__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+  </main>
+
+  <dialog class="catalog-modal" id="catalogModal" aria-labelledby="catalogTitle">
+    <div class="catalog-modal__shell">
+      <header class="catalog-modal__header">
+        <div>
+          <span class="catalog-modal__eyebrow">Catálogo Epinte / <b id="catalogCount">00 peças</b></span>
+          <h2 id="catalogTitle">Coleção</h2>
+        </div>
+        <div class="catalog-modal__hint"><span>1. Coleção</span><span>2. Produto</span><span>3. Comprar</span></div>
+        <button class="catalog-close" type="button" aria-label="Fechar catálogo">×</button>
+      </header>
+      <div class="catalog-modal__body">
+        <section class="catalog-browser" aria-label="Produtos da coleção">
+          <div class="catalog-browser__intro">
+            <span>Etapa 02 / Escolha uma peça</span>
+            <h3>Itens desta coleção</h3>
+            <p id="catalogDescription">Clique em uma peça para abrir a página individual dela.</p>
+          </div>
+          <div class="catalog-grid" id="catalogGrid"></div>
+        </section>
+        <aside class="product-detail" id="productDetail" aria-live="polite">
+          <button class="product-detail__back" type="button">← Voltar à coleção</button>
+          <div class="product-detail__empty">
+            <div class="product-detail__mascot"><img src="assets/mascote.png" alt=""></div>
+            <span>✦</span>
+            <p>Qual mundo a gente<br>vai pintar hoje?</p>
+            <small>Escolha uma peça ao lado</small>
+          </div>
+          <div class="product-detail__content" hidden>
+            <div class="product-detail__image"><img id="detailImage" src="" alt=""></div>
+            <div class="product-detail__meta">
+              <span id="detailCollection"></span>
+              <h3 id="detailName"></h3>
+              <p id="detailDescription"></p>
+              <div class="product-detail__specs">
+                <span><b>Material</b><i id="detailMaterial"></i></span>
+                <span><b>Tamanhos</b><i id="detailSizes"></i></span>
+                <span><b>Acabamento</b><i id="detailFinish"></i></span>
+              </div>
+              <div class="buy-channels">
+                <p>Onde comprar</p>
+                <a href="#" data-channel="mercado-livre" target="_blank" rel="noopener">Mercado Livre <b>↗</b></a>
+                <a href="#" data-channel="amazon" target="_blank" rel="noopener">Amazon <b>↗</b></a>
+                <a href="#contato" data-channel="direto">Pedir este produto <b>↗</b></a>
+                <a href="#contato" data-channel="atacado">Comprar para atacado <b>↗</b></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+
+  <a class="whatsapp-float magnetic" href="#contato" aria-label="Falar com a Epinte no WhatsApp">
+    <span>Whats</span><b>↗</b>
+  </a>
+
+  <footer id="empresa">
+    <a class="brand brand--footer" href="#inicio"><img src="assets/logo.png" alt="Epinte"></a>
+    <div class="footer__about">
+      <p>Peças para pintar. Mundos para inventar.</p>
+      <span>Produção com a experiência da Isotan, parceira com mais de 10 anos de mercado.</span>
+    </div>
+    <div class="footer__company">
+      <span><b>Localização</b>RS-287, nº 5680 · Montenegro/RS</span>
+      <span><b>CNPJ</b>A confirmar</span>
+    </div>
+    <div class="footer__links"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#">E-mail</a></div>
+    <small>© 2026 Epinte. Feito com imaginação.</small>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

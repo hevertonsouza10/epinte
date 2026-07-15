@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "defaults": {
+    "specs": {
+      "material": "EPS alta densidade",
+      "sizes": "10, 15 e 20 cm",
+      "finish": "Pronto para pintar"
+    },
+    "purchase": {
+      "direct": "#contato",
+      "wholesale": "#contato"
+    }
+  },
+  "collections": {
+    "animais": {
+      "name": "Coleção de animais",
+      "description": "Animais para pintar, inventar histórias e criar oficinas cheias de personalidade.",
+      "products": [
+        {
+          "id": "cachorro",
+          "name": "Cachorro",
+          "image": "assets/products/cachorro.png",
+          "tag": "Fauna",
+          "description": "Uma silhueta amigável para explorar cores, texturas e criar o companheiro mais divertido do mundo."
+        },
+        {
+          "id": "cavalo",
+          "name": "Cavalo",
+          "image": "assets/products/cavalo.png",
+          "tag": "Fauna",
+          "description": "Uma peça cheia de movimento para oficinas, brincadeiras e projetos sobre animais."
+        },
+        {
+          "id": "pomba",
+          "name": "Pomba",
+          "image": "assets/products/pomba.png",
+          "tag": "Fauna",
+          "description": "Leve, delicada e pronta para ganhar cores, colagens e histórias únicas."
+        },
+        {
+          "id": "passaros",
+          "name": "Kit pássaros",
+          "image": "assets/products/passaros.png",
+          "tag": "Kit fauna",
+          "description": "Um conjunto de pássaros em diferentes poses para criar uma oficina inteira em torno da natureza."
+        }
+      ]
+    },
+    "pedagogico": {
+      "name": "Coleção de letras e números",
+      "description": "Peças pedagógicas tridimensionais para aprender brincando e colocar a criatividade em prática.",
+      "products": [
+        {
+          "id": "letra-a",
+          "name": "Letra A",
+          "image": "assets/products/letra-a.png",
+          "tag": "Pedagógico",
+          "description": "Uma letra tridimensional que torna alfabetização, nome próprio e decoração muito mais táteis."
+        },
+        {
+          "id": "alfabeto",
+          "name": "Alfabeto 3D",
+          "image": "assets/products/alfabeto.png",
+          "tag": "Kit pedagógico",
+          "description": "O alfabeto completo para aprender brincando, pintar palavras e criar dinâmicas em sala de aula."
+        },
+        {
+          "id": "numeros",
+          "name": "Números 3D",
+          "image": "assets/products/numeros.png",
+          "tag": "Kit pedagógico",
+          "description": "Do zero ao nove, uma coleção para transformar contagem e matemática em experiências criativas."
+        }
+      ]
+    },
+    "aventura": {
+      "name": "Coleção imaginação e aventura",
+      "description": "Personagens e formas que abrem espaço para histórias de outros mundos.",
+      "products": [
+        {
+          "id": "rex",
+          "name": "Rex",
+          "image": "assets/products/rex.png",
+          "tag": "Aventura",
+          "description": "Um dinossauro gigante em personalidade, pronto para receber cores de outro mundo.",
+          "specs": {
+            "sizes": "15 e 20 cm"
+          }
+        }
+      ]
+    }
+  }
+}

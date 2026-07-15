@@ -1,0 +1,16 @@
+# Arquivos locais do sistema e de editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencias e artefatos gerados
+node_modules/
+dist/
+*.log
+
+# Arquivo vazio criado acidentalmente na raiz
+/Object.keys(x.collections))
+
+# Materiais-fonte internos; o site publicado usa apenas /assets
+/marca/
