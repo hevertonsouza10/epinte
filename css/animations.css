@@ -42,10 +42,6 @@
   50% { transform: translate3d(0, -1.2rem, 0) rotate(5deg); }
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
 @keyframes ticker {
   to { transform: translateX(-50%); }
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#29a8e8">
+  <title>Painel administrativo — Epinte</title>
+  <link rel="icon" href="../assets/logo.png">
+  <style>
+    @font-face {
+      font-family: "Epinte";
+      src: url("../assets/Gotham-Medium.otf") format("opentype");
+      font-display: swap;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      display: grid;
+      min-height: 100svh;
+      margin: 0;
+      padding: 1rem;
+      color: #272727;
+      background: #29a8e8;
+      font-family: "Epinte", Arial, sans-serif;
+      place-items: center;
+    }
+
+    main {
+      width: min(100%, 32rem);
+      padding: clamp(2rem, 7vw, 4rem);
+      border: 2px solid #272727;
+      border-radius: 2rem;
+      background: #fffdf8;
+      box-shadow: .8rem .8rem 0 #ffcf00;
+    }
+
+    img { width: 9rem; }
+
+    h1 {
+      margin: 3rem 0 1rem;
+      font-size: clamp(2.4rem, 9vw, 4.5rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+
+    p {
+      margin: 0;
+      font-size: .85rem;
+      line-height: 1.65;
+    }
+
+    a {
+      display: flex;
+      min-height: 3.8rem;
+      margin-top: 2rem;
+      padding: 0 1.3rem;
+      border: 2px solid #272727;
+      border-radius: 999px;
+      color: #272727;
+      background: #ffcf00;
+      align-items: center;
+      justify-content: space-between;
+      font-size: .72rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    small {
+      display: block;
+      margin-top: 1.3rem;
+      opacity: .62;
+      font-size: .62rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="../assets/logo.png" alt="Epinte">
+    <h1>Painel administrativo</h1>
+    <p>Entre para adicionar produtos, trocar imagens e atualizar os textos permitidos do site.</p>
+    <a href="https://app.pagescms.org/" rel="noopener">Entrar no painel <span>↗</span></a>
+    <small>O acesso é protegido pela conta autorizada do GitHub. Nenhuma senha fica armazenada neste site.</small>
+  </main>
+</body>
+</html>

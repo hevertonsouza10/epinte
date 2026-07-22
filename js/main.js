@@ -1,5 +1,18 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+fetch("assets/data/site-content.json")
+  .then((response) => {
+    if (!response.ok) throw new Error(`Não foi possível carregar os textos editáveis (${response.status}).`);
+    return response.json();
+  })
+  .then((content) => {
+    document.querySelectorAll("[data-content]").forEach((element) => {
+      const value = content[element.dataset.content];
+      if (typeof value === "string" && value.trim()) element.textContent = value;
+    });
+  })
+  .catch((error) => console.warn(error));
+
 const progressBar = document.querySelector(".scroll-progress span");
 const updateScrollProgress = () => {
   if (!progressBar) return;
@@ -216,17 +229,32 @@ if (canvas) {
 
 const menuButton = document.querySelector(".menu-toggle");
 if (menuButton) {
+  const closeMenu = () => {
+    document.body.classList.remove("menu-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Abrir menu");
+  };
+
   menuButton.addEventListener("click", () => {
     const open = menuButton.getAttribute("aria-expanded") === "true";
     menuButton.setAttribute("aria-expanded", String(!open));
+    menuButton.setAttribute("aria-label", open ? "Abrir menu" : "Fechar menu");
     document.body.classList.toggle("menu-open", !open);
   });
 
-  document.querySelectorAll(".site-header nav a").forEach((link) => {
-    link.addEventListener("click", () => {
-      document.body.classList.remove("menu-open");
-      menuButton.setAttribute("aria-expanded", "false");
-    });
+  document.querySelectorAll(".site-header nav a, .site-header > .button").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("menu-open")) {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) closeMenu();
   });
 }
 
@@ -285,6 +313,9 @@ if (catalogModal) {
   let catalogData = null;
   let allProducts = [];
 
+  const getProductImage = (product) =>
+    product.imageUrl?.trim() || product.image?.trim() || "assets/mascote.png";
+
   const setCatalogUrl = (hash) => {
     history.replaceState(null, "", hash);
   };
@@ -318,7 +349,7 @@ if (catalogModal) {
     catalogDescription.textContent = collection.description;
     catalogGrid.innerHTML = collection.products.map((product) => `
       <button class="catalog-product" type="button" data-catalog-product="${product.id}">
-        <img src="${product.image}" alt="${product.name} em EPS">
+        <img src="${getProductImage(product)}" alt="${product.name} em EPS">
         <div><b>${product.name}</b><span>${product.tag}</span></div>
       </button>
     `).join("");
@@ -343,7 +374,7 @@ if (catalogModal) {
     catalogGrid.querySelectorAll(".catalog-product").forEach((button) => {
       button.classList.toggle("is-selected", button.dataset.catalogProduct === productId);
     });
-    detailImage.src = product.image;
+    detailImage.src = getProductImage(product);
     detailImage.alt = `${product.name} em EPS`;
     detailCollection.textContent = `${collection.name} / ${product.tag}`;
     detailName.textContent = product.name;
@@ -407,7 +438,7 @@ if (catalogModal) {
         card.querySelector("[data-collection-description]").textContent = collection.description;
         card.querySelector("[data-collection-preview]").innerHTML = collection.products.slice(0, 3).map((product, index) => `
           <span class="collection-preview__item collection-preview__item--${index + 1}">
-            <img src="${product.image}" alt="">
+            <img src="${getProductImage(product)}" alt="">
           </span>
         `).join("");
 
