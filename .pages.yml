@@ -80,7 +80,7 @@ content:
                     label: Identificador
                     type: string
                     required: true
-                    description: Use somente letras minúsculas, números e hífens. Exemplo: painel-leao.
+                    description: "Use somente letras minúsculas, números e hífens. Exemplo: painel-leao."
                     pattern:
                       regex: "^[a-z0-9-]+$"
                       message: Use somente letras minúsculas, números e hífens.
@@ -163,7 +163,7 @@ content:
                     label: Identificador
                     type: string
                     required: true
-                    description: Use somente letras minúsculas, números e hífens. Exemplo: painel-letra-b.
+                    description: "Use somente letras minúsculas, números e hífens. Exemplo: painel-letra-b."
                     pattern:
                       regex: "^[a-z0-9-]+$"
                       message: Use somente letras minúsculas, números e hífens.
@@ -246,7 +246,7 @@ content:
                     label: Identificador
                     type: string
                     required: true
-                    description: Use somente letras minúsculas, números e hífens. Exemplo: painel-foguete.
+                    description: "Use somente letras minúsculas, números e hífens. Exemplo: painel-foguete."
                     pattern:
                       regex: "^[a-z0-9-]+$"
                       message: Use somente letras minúsculas, números e hífens.
