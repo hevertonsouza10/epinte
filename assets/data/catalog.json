@@ -43,6 +43,13 @@
           "image": "assets/products/passaros.png",
           "tag": "Kit fauna",
           "description": "Um conjunto de pássaros em diferentes poses para criar uma oficina inteira em torno da natureza."
+        },
+        {
+          "id": "galinha",
+          "name": "galinha",
+          "image": "assets/products/capturadetela2026-07-08015415png202607080211.jpeg",
+          "tag": "Fauna",
+          "description": "Leve, delicada e pronta para ganhar cores, colagens e histórias únicas."
         }
       ]
     },
