@@ -33,6 +33,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -121,21 +122,10 @@ h2 em {
 .section-index {
   display: flex;
   align-items: center;
-  gap: .8rem;
   margin-bottom: 2.5rem;
   font-size: .68rem;
   text-transform: uppercase;
   letter-spacing: .12em;
-}
-
-.section-index span {
-  display: grid;
-  width: 1.8rem;
-  height: 1.8rem;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  place-items: center;
-  font-size: .55rem;
 }
 
 .section-index--light {

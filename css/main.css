@@ -645,37 +645,13 @@
   line-height: 1.6;
 }
 
-.round-stamp {
-  position: relative;
-  display: grid;
-  width: 9rem;
-  height: 9rem;
-  margin-bottom: 2rem;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-  place-items: center;
-}
-
-.round-stamp span,
-.mascot-orbit span {
-  position: absolute;
-  inset: .5rem;
-  animation: spin 14s linear infinite;
-  font-family: var(--hand);
-  font-size: 1rem;
-  word-spacing: 1.3rem;
-}
-
-.round-stamp b {
-  color: var(--blue);
-  font-family: var(--hand);
-  font-size: 3.5rem;
-}
-
 .paint-lab {
   display: grid;
+  width: 100%;
+  min-width: 0;
   min-height: 100svh;
   padding: clamp(5rem, 9vw, 9rem) var(--edge);
+  overflow: hidden;
   color: var(--white);
   background: var(--ink);
   grid-template-columns: .75fr 1.25fr;
@@ -734,6 +710,14 @@
 
 .paint-lab__stage {
   position: relative;
+  min-width: 0;
+}
+
+.paint-lab__copy,
+.paint-card,
+#paintCanvas {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .paint-card {
@@ -1679,18 +1663,6 @@
   z-index: 2;
   filter: drop-shadow(1rem 1.5rem 0 rgba(39, 39, 39, .12));
   transform: rotate(-5deg);
-}
-
-.mascot-orbit {
-  position: absolute;
-  inset: -4rem;
-  border-radius: 50%;
-}
-
-.mascot-orbit span {
-  inset: 0;
-  font-size: 1.3rem;
-  word-spacing: 3rem;
 }
 
 .promise__copy h2 {
@@ -2818,14 +2790,16 @@ footer small {
 
   body.menu-open .site-header nav {
     position: fixed;
-    inset: 8rem var(--edge) auto;
+    inset: 7.5rem var(--edge) 7rem;
     display: grid;
+    overflow-y: auto;
     gap: 0;
     font-family: var(--hand);
     font-size: clamp(3.4rem, 14vw, 6rem);
     line-height: 1.15;
     text-transform: none;
     letter-spacing: -.03em;
+    align-content: start;
   }
 
   body.menu-open .site-header nav a {
@@ -2839,6 +2813,18 @@ footer small {
 
   body.menu-open .site-header .brand {
     filter: brightness(0) invert(1);
+  }
+
+  body.menu-open .site-header .button {
+    position: fixed;
+    right: var(--edge);
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    left: var(--edge);
+    z-index: 2;
+    display: inline-flex;
+    width: auto;
+    color: var(--ink);
+    background: var(--yellow);
   }
 
   body.menu-open .menu-toggle {
@@ -2859,8 +2845,8 @@ footer small {
 
   .menu-toggle {
     display: grid;
-    width: 3rem;
-    height: 3rem;
+    width: 3.25rem;
+    height: 3.25rem;
     padding: 0;
     border: 1px solid var(--ink);
     border-radius: 50%;
@@ -2965,13 +2951,8 @@ footer small {
   .manifesto__aside {
     display: grid;
     margin-top: 3rem;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr;
     align-items: center;
-  }
-
-  .round-stamp {
-    margin-bottom: 0;
   }
 
   .paint-lab,
@@ -3111,7 +3092,20 @@ footer small {
   }
 
   h2 {
-    font-size: 3.6rem;
+    font-size: clamp(2.85rem, 15vw, 3.6rem);
+  }
+
+  .button,
+  .button--large {
+    width: 100%;
+    min-height: 3.75rem;
+    padding-inline: 1.15rem;
+    gap: .8rem;
+    text-align: center;
+  }
+
+  .site-header {
+    padding-top: max(1rem, env(safe-area-inset-top));
   }
 
   .brand {
@@ -3123,7 +3117,13 @@ footer small {
   }
 
   .hero__title {
-    font-size: 4.15rem;
+    margin-top: 3.5rem;
+    font-size: clamp(3.35rem, 17vw, 4.15rem);
+    line-height: .8;
+  }
+
+  .hero__footer {
+    margin-top: 4rem;
   }
 
   .hero__product-photo {
@@ -3136,7 +3136,7 @@ footer small {
   }
 
   .brand-film__frame {
-    height: 72svh;
+    height: min(72svh, 38rem);
   }
 
   .catalog-modal__header {
@@ -3263,8 +3263,8 @@ footer small {
   .film-whatsapp {
     right: 1rem;
     bottom: 1rem;
-    width: 6rem;
-    height: 6rem;
+    width: 5.5rem;
+    height: 5.5rem;
   }
 
   .film-toggle {
@@ -3290,17 +3290,13 @@ footer small {
     grid-template-columns: 1fr;
   }
 
-  .round-stamp {
-    width: 7rem;
-    height: 7rem;
-  }
-
-  .round-stamp span {
-    font-size: .75rem;
-  }
-
   .paint-lab {
     padding-block: 6rem;
+  }
+
+  .palette {
+    flex-wrap: wrap;
+    gap: .85rem;
   }
 
   .color {
@@ -3315,6 +3311,14 @@ footer small {
 
   .piece-card {
     min-height: 29rem;
+  }
+
+  .piece-card__meta {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .piece-card__meta i {
+    grid-column: 2;
   }
 
   .piece-shape--elephant {
@@ -3350,7 +3354,11 @@ footer small {
   }
 
   .solution-card h3 {
-    font-size: 3.6rem;
+    font-size: clamp(2.75rem, 14vw, 3.6rem);
+  }
+
+  .solution-card {
+    min-height: 22rem;
   }
 
   .buy-step {
@@ -3377,10 +3385,17 @@ footer small {
   }
 
   .faq summary {
-    font-size: .63rem;
+    gap: 1rem;
+    font-size: .66rem;
+  }
+
+  .faq details p {
+    padding-right: 0;
   }
 
   .whatsapp-float {
+    right: .8rem;
+    bottom: max(.8rem, env(safe-area-inset-bottom));
     width: 4rem;
     height: 4rem;
   }
@@ -3393,16 +3408,16 @@ footer small {
     width: 12rem;
   }
 
-  .mascot-orbit {
-    display: none;
-  }
-
   .final-cta {
     min-height: 80svh;
   }
 
   .final-cta h2 {
-    font-size: 4.2rem;
+    font-size: clamp(3.15rem, 16vw, 4.2rem);
+  }
+
+  .final-cta .button {
+    max-width: 21rem;
   }
 
   .contact-section {
@@ -3417,12 +3432,22 @@ footer small {
   }
 
   .contact-section__copy h2 {
-    font-size: 4.5rem;
+    font-size: clamp(3.5rem, 18vw, 4.5rem);
   }
 
   .contact-section__actions {
     display: grid;
+    width: 100%;
     justify-items: start;
+  }
+
+  .contact-list > a,
+  .contact-list__item {
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  }
+
+  .contact-list p {
+    overflow-wrap: anywhere;
   }
 
   .contact-map {
@@ -3442,15 +3467,30 @@ footer small {
     top: 1rem;
     left: 1rem;
     max-width: calc(100% - 2rem);
+    padding: .7rem;
+  }
+
+  .contact-map__label img {
+    width: 3.5rem;
+    flex: 0 0 auto;
   }
 
   .contact-map > a {
     right: 1rem;
     bottom: 1rem;
+    left: 1rem;
+    justify-content: center;
   }
 
   footer {
     grid-template-columns: 1fr;
+    padding-block: 3rem;
+    gap: 1.5rem;
+  }
+
+  footer > div,
+  .footer__links {
+    flex-wrap: wrap;
   }
 
   .quick-buy {
@@ -3464,4 +3504,26 @@ footer small {
   .quick-buy__card {
     min-height: 20rem;
   }
+}
+
+@media (max-width: 380px) {
+  .brand { width: 7.5rem; }
+  .hero { padding-top: 7.5rem; }
+
+  .hero__eyebrow {
+    max-width: 15rem;
+    font-size: .56rem;
+    line-height: 1.45;
+  }
+
+  .hero__title { font-size: clamp(3rem, 16.5vw, 3.55rem); }
+  .catalog-product { grid-template-columns: 6.5rem minmax(0, 1fr); }
+
+  .contact-list > a,
+  .contact-list__item {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+
+  .contact-list i,
+  .contact-map__label img { display: none; }
 }
