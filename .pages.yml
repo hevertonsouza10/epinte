@@ -53,92 +53,258 @@ content:
                 required: true
 
       - name: collections
-        label: Colecoes
+        label: Coleções
         type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{name}"
         fields:
-          - name: id
-            label: Identificador da colecao
-            type: string
-            required: true
-            pattern:
-              regex: "^[a-z0-9-]+$"
-          - name: name
-            label: Nome da colecao
-            type: string
-            required: true
-          - name: description
-            label: Descricao da colecao
-            type: text
-            required: true
-          - name: products
-            label: Produtos
+          - name: animais
+            label: Coleção de animais
             type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{name} - {tag}"
             fields:
-              - name: id
-                label: Identificador
-                type: string
-                required: true
-                pattern:
-                  regex: "^[a-z0-9-]+$"
               - name: name
-                label: Nome do produto
-                type: string
-                required: true
-              - name: image
-                label: Enviar imagem
-                type: image
-                options:
-                  media: products
-                  extensions: [png, jpg, jpeg, webp]
-                  rename: safe
-              - name: imageUrl
-                label: URL externa da imagem
-                type: string
-              - name: tag
-                label: Categoria curta
+                label: Nome da coleção
                 type: string
                 required: true
               - name: description
-                label: Descricao
+                label: Descrição da coleção
                 type: text
                 required: true
-              - name: specs
-                label: Especificacoes proprias
+              - name: products
+                label: Produtos
                 type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name} — {tag}"
                 fields:
-                  - name: material
-                    label: Material
+                  - name: id
+                    label: Identificador
                     type: string
-                  - name: sizes
-                    label: Tamanhos
+                    required: true
+                    description: "Use somente letras minúsculas, números e hífens. Exemplo: painel-leao."
+                    pattern:
+                      regex: "^[a-z0-9-]+$"
+                      message: Use somente letras minúsculas, números e hífens.
+                  - name: name
+                    label: Nome do produto
                     type: string
-                  - name: finish
-                    label: Acabamento
+                    required: true
+                  - name: image
+                    label: Enviar imagem
+                    type: image
+                    description: Faça upload aqui ou use o campo de URL externa abaixo.
+                    options:
+                      media: products
+                      extensions: [png, jpg, jpeg, webp]
+                      rename: safe
+                  - name: imageUrl
+                    label: URL externa da imagem
                     type: string
-              - name: purchase
-                label: Links proprios de compra
+                    description: Opcional. Quando preenchida, esta URL tem prioridade sobre a imagem enviada.
+                  - name: tag
+                    label: Categoria curta
+                    type: string
+                    required: true
+                  - name: description
+                    label: Descrição
+                    type: text
+                    required: true
+                  - name: specs
+                    label: Especificações próprias
+                    type: object
+                    description: Preencha apenas quando forem diferentes das informações padrão.
+                    fields:
+                      - name: material
+                        label: Material
+                        type: string
+                      - name: sizes
+                        label: Tamanhos
+                        type: string
+                      - name: finish
+                        label: Acabamento
+                        type: string
+                  - name: purchase
+                    label: Links próprios de compra
+                    type: object
+                    fields:
+                      - name: mercadoLivre
+                        label: Mercado Livre
+                        type: string
+                      - name: amazon
+                        label: Amazon
+                        type: string
+                      - name: direct
+                        label: Compra direta
+                        type: string
+                      - name: wholesale
+                        label: Atacado
+                        type: string
+
+          - name: pedagogico
+            label: Coleção de letras e números
+            type: object
+            fields:
+              - name: name
+                label: Nome da coleção
+                type: string
+                required: true
+              - name: description
+                label: Descrição da coleção
+                type: text
+                required: true
+              - name: products
+                label: Produtos
                 type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name} — {tag}"
                 fields:
-                  - name: mercadoLivre
-                    label: Mercado Livre
+                  - name: id
+                    label: Identificador
                     type: string
-                  - name: amazon
-                    label: Amazon
+                    required: true
+                    description: "Use somente letras minúsculas, números e hífens. Exemplo: painel-letra-b."
+                    pattern:
+                      regex: "^[a-z0-9-]+$"
+                      message: Use somente letras minúsculas, números e hífens.
+                  - name: name
+                    label: Nome do produto
                     type: string
-                  - name: direct
-                    label: Compra direta
+                    required: true
+                  - name: image
+                    label: Enviar imagem
+                    type: image
+                    description: Faça upload aqui ou use o campo de URL externa abaixo.
+                    options:
+                      media: products
+                      extensions: [png, jpg, jpeg, webp]
+                      rename: safe
+                  - name: imageUrl
+                    label: URL externa da imagem
                     type: string
-                  - name: wholesale
-                    label: Atacado
+                    description: Opcional. Quando preenchida, esta URL tem prioridade sobre a imagem enviada.
+                  - name: tag
+                    label: Categoria curta
                     type: string
+                    required: true
+                  - name: description
+                    label: Descrição
+                    type: text
+                    required: true
+                  - name: specs
+                    label: Especificações próprias
+                    type: object
+                    description: Preencha apenas quando forem diferentes das informações padrão.
+                    fields:
+                      - name: material
+                        label: Material
+                        type: string
+                      - name: sizes
+                        label: Tamanhos
+                        type: string
+                      - name: finish
+                        label: Acabamento
+                        type: string
+                  - name: purchase
+                    label: Links próprios de compra
+                    type: object
+                    fields:
+                      - name: mercadoLivre
+                        label: Mercado Livre
+                        type: string
+                      - name: amazon
+                        label: Amazon
+                        type: string
+                      - name: direct
+                        label: Compra direta
+                        type: string
+                      - name: wholesale
+                        label: Atacado
+                        type: string
+
+          - name: aventura
+            label: Coleção imaginação e aventura
+            type: object
+            fields:
+              - name: name
+                label: Nome da coleção
+                type: string
+                required: true
+              - name: description
+                label: Descrição da coleção
+                type: text
+                required: true
+              - name: products
+                label: Produtos
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name} — {tag}"
+                fields:
+                  - name: id
+                    label: Identificador
+                    type: string
+                    required: true
+                    description: "Use somente letras minúsculas, números e hífens. Exemplo: painel-foguete."
+                    pattern:
+                      regex: "^[a-z0-9-]+$"
+                      message: Use somente letras minúsculas, números e hífens.
+                  - name: name
+                    label: Nome do produto
+                    type: string
+                    required: true
+                  - name: image
+                    label: Enviar imagem
+                    type: image
+                    description: Faça upload aqui ou use o campo de URL externa abaixo.
+                    options:
+                      media: products
+                      extensions: [png, jpg, jpeg, webp]
+                      rename: safe
+                  - name: imageUrl
+                    label: URL externa da imagem
+                    type: string
+                    description: Opcional. Quando preenchida, esta URL tem prioridade sobre a imagem enviada.
+                  - name: tag
+                    label: Categoria curta
+                    type: string
+                    required: true
+                  - name: description
+                    label: Descrição
+                    type: text
+                    required: true
+                  - name: specs
+                    label: Especificações próprias
+                    type: object
+                    description: Preencha apenas quando forem diferentes das informações padrão.
+                    fields:
+                      - name: material
+                        label: Material
+                        type: string
+                      - name: sizes
+                        label: Tamanhos
+                        type: string
+                      - name: finish
+                        label: Acabamento
+                        type: string
+                  - name: purchase
+                    label: Links próprios de compra
+                    type: object
+                    fields:
+                      - name: mercadoLivre
+                        label: Mercado Livre
+                        type: string
+                      - name: amazon
+                        label: Amazon
+                        type: string
+                      - name: direct
+                        label: Compra direta
+                        type: string
+                      - name: wholesale
+                        label: Atacado
+                        type: string
+
   - name: site-content
     label: Textos editáveis do site
     type: file

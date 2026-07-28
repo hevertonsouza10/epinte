@@ -312,8 +312,6 @@ if (catalogModal) {
   let activeCollection = null;
   let catalogData = null;
   let allProducts = [];
-  const getCollections = () => Array.isArray(catalogData.collections) ? catalogData.collections.map((collection) => [collection.id, collection]) : Object.entries(catalogData.collections);
-  const getCollection = (collectionId) => getCollections().find(([id]) => id === collectionId)?.[1];
 
   const getProductImage = (product) =>
     product.imageUrl?.trim() || product.image?.trim() || "assets/mascote.png";
@@ -341,7 +339,7 @@ if (catalogModal) {
   };
 
   const openCollection = (collectionId, { updateUrl = true } = {}) => {
-    const collection = getCollection(collectionId);
+    const collection = catalogData.collections[collectionId];
     if (!collection) return;
     activeCollection = collectionId;
     catalogModal.dataset.collection = collectionId;
@@ -368,7 +366,7 @@ if (catalogModal) {
   };
 
   const selectProduct = (productId, { updateUrl = true } = {}) => {
-    const collection = getCollection(activeCollection);
+    const collection = catalogData.collections[activeCollection];
     const product = collection?.products.find((item) => item.id === productId);
     if (!product) return;
     const specs = { ...catalogData.defaults.specs, ...product.specs };
@@ -427,21 +425,12 @@ if (catalogModal) {
   const initCatalog = async () => {
     try {
       catalogData = await catalogRepository.getCatalog();
-      allProducts = getCollections().flatMap(([collectionId, collection]) =>
+      allProducts = Object.entries(catalogData.collections).flatMap(([collectionId, collection]) =>
         collection.products.map((product) => ({ ...product, collectionId }))
       );
 
-      const collectionGrid = document.querySelector("#collectionGrid");
-      collectionGrid.innerHTML = getCollections().map(([collectionId, collection], index) => {
-        const card = document.createElement("article");
-        card.className = `piece-card piece-card--${["blue", "yellow", "pink"][index % 3]}`;
-        card.dataset.reveal = ""; card.dataset.collectionCard = collectionId; card.setAttribute("role", "button"); card.tabIndex = 0;
-        card.innerHTML = `<div class="piece-card__meta"><span>${String(index + 1).padStart(2, "0")}</span><b data-collection-name></b><i data-collection-count></i></div><div class="collection-preview" data-collection-preview aria-hidden="true"></div><p class="piece-card__description" data-collection-description></p><span class="collection-trigger">Ver colecao <span>-></span></span>`;
-        return card.outerHTML;
-      }).join("");
-
       document.querySelectorAll("[data-collection-card]").forEach((card) => {
-        const collection = getCollection(card.dataset.collectionCard);
+        const collection = catalogData.collections[card.dataset.collectionCard];
         if (!collection) return;
         const count = collection.products.length;
         card.querySelector("[data-collection-name]").textContent = collection.name;
@@ -466,7 +455,7 @@ if (catalogModal) {
       const applyCatalogRoute = () => {
         const catalogHash = window.location.hash.match(/^#catalogo-(.+)$/);
         const productHash = window.location.hash.match(/^#produto-(.+)$/);
-        if (catalogHash && getCollection(catalogHash[1])) {
+        if (catalogHash && catalogData.collections[catalogHash[1]]) {
           openCollection(catalogHash[1], { updateUrl: false });
         } else if (productHash) {
           const product = allProducts.find((item) => item.id === productHash[1]);
