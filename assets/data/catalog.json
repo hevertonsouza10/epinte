@@ -11,8 +11,9 @@
       "wholesale": "#contato"
     }
   },
-  "collections": {
-    "animais": {
+  "collections": [
+    {
+      "id": "animais",
       "name": "Coleção de animais",
       "description": "Animais para pintar, inventar histórias e criar oficinas cheias de personalidade.",
       "products": [
@@ -53,7 +54,8 @@
         }
       ]
     },
-    "pedagogico": {
+    {
+      "id": "pedagogico",
       "name": "Coleção de letras e números",
       "description": "Peças pedagógicas tridimensionais para aprender brincando e colocar a criatividade em prática.",
       "products": [
@@ -80,7 +82,8 @@
         }
       ]
     },
-    "aventura": {
+    {
+      "id": "aventura",
       "name": "Coleção imaginação e aventura",
       "description": "Personagens e formas que abrem espaço para histórias de outros mundos.",
       "products": [
@@ -96,5 +99,5 @@
         }
       ]
     }
-  }
+  ]
 }
