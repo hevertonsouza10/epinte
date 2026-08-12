@@ -2,7 +2,11 @@
 
 O arquivo `catalog.json` funciona como o banco de dados local do catálogo.
 
-Para cadastrar um produto:
+Pelo painel administrativo, use **Categorias do catálogo** para criar categorias e
+**Novas coleções** para criar coleções que aparecerão automaticamente na vitrine.
+Depois, cadastre os produtos dentro da coleção e informe a categoria.
+
+Para cadastrar um produto manualmente:
 
 1. Coloque a imagem em `assets/products/`.
 2. Adicione o produto no array `products` da coleção desejada.

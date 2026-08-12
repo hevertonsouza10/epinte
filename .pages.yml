@@ -104,6 +104,10 @@ content:
                     label: Categoria curta
                     type: string
                     required: true
+                  - name: category
+                    label: Categoria do catálogo (opcional)
+                    type: string
+                    description: "Use o identificador de uma categoria cadastrada acima."
                   - name: description
                     label: Descrição
                     type: text
@@ -187,6 +191,10 @@ content:
                     label: Categoria curta
                     type: string
                     required: true
+                  - name: category
+                    label: Categoria do catálogo (opcional)
+                    type: string
+                    description: "Use o identificador de uma categoria cadastrada acima."
                   - name: description
                     label: Descrição
                     type: text
@@ -270,6 +278,10 @@ content:
                     label: Categoria curta
                     type: string
                     required: true
+                  - name: category
+                    label: Categoria do catálogo (opcional)
+                    type: string
+                    description: "Use o identificador de uma categoria cadastrada acima."
                   - name: description
                     label: Descrição
                     type: text
@@ -304,6 +316,87 @@ content:
                       - name: wholesale
                         label: Atacado
                         type: string
+
+  - name: categories
+    label: Categorias do catálogo
+    type: file
+    path: assets/data/categories.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Identificador
+        type: string
+        required: true
+        description: "Use letras minúsculas, números e hifens. Exemplo: natureza."
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Use somente letras minúsculas, números e hifens.
+      - name: name
+        label: Nome da categoria
+        type: string
+        required: true
+
+  - name: customCollections
+    label: Novas coleções
+    type: file
+    path: assets/data/custom-collections.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Identificador
+        type: string
+        required: true
+        description: "Use letras minúsculas, números e hifens. Exemplo: festa-junina."
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Use somente letras minúsculas, números e hifens.
+      - name: name
+        label: Nome da coleção
+        type: string
+        required: true
+      - name: description
+        label: Descrição da coleção
+        type: text
+        required: true
+      - name: products
+        label: Produtos da coleção
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} — {tag}"
+        fields:
+          - name: id
+            label: Identificador
+            type: string
+            required: true
+            pattern:
+              regex: "^[a-z0-9-]+$"
+              message: Use somente letras minúsculas, números e hifens.
+          - name: name
+            label: Nome do produto
+            type: string
+            required: true
+          - name: image
+            label: Enviar imagem
+            type: image
+            options:
+              media: products
+              extensions: [png, jpg, jpeg, webp]
+              rename: safe
+          - name: imageUrl
+            label: URL externa da imagem
+            type: string
+          - name: category
+            label: Categoria
+            type: string
+            required: true
+          - name: description
+            label: Descrição
+            type: text
+            required: true
 
   - name: site-content
     label: Textos editáveis do site

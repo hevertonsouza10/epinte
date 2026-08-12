@@ -291,7 +291,11 @@ if (catalogModal) {
     async getCatalog() {
       const response = await fetch("assets/data/catalog.json");
       if (!response.ok) throw new Error(`Não foi possível carregar o catálogo (${response.status}).`);
-      return response.json();
+      const catalog = await response.json();
+      const collectionsResponse = await fetch("assets/data/custom-collections.json");
+      if (!collectionsResponse.ok) throw new Error("NÃ£o foi possÃ­vel carregar as novas coleÃ§Ãµes.");
+      catalog.customCollections = await collectionsResponse.json();
+      return catalog;
     }
   };
 
@@ -312,6 +316,14 @@ if (catalogModal) {
   let activeCollection = null;
   let catalogData = null;
   let allProducts = [];
+
+  const getCollections = () => {
+    const fixed = Array.isArray(catalogData.collections)
+      ? catalogData.collections
+      : Object.entries(catalogData.collections || {}).map(([id, collection]) => ({ id, ...collection }));
+    return [...fixed, ...(catalogData.customCollections || [])];
+  };
+  const getCollection = (collectionId) => getCollections().find((collection) => collection.id === collectionId);
 
   const getProductImage = (product) =>
     product.imageUrl?.trim() || product.image?.trim() || "assets/mascote.png";
@@ -339,7 +351,7 @@ if (catalogModal) {
   };
 
   const openCollection = (collectionId, { updateUrl = true } = {}) => {
-    const collection = catalogData.collections[collectionId];
+    const collection = getCollection(collectionId);
     if (!collection) return;
     activeCollection = collectionId;
     catalogModal.dataset.collection = collectionId;
@@ -350,7 +362,7 @@ if (catalogModal) {
     catalogGrid.innerHTML = collection.products.map((product) => `
       <button class="catalog-product" type="button" data-catalog-product="${product.id}">
         <img src="${getProductImage(product)}" alt="${product.name} em EPS">
-        <div><b>${product.name}</b><span>${product.tag}</span></div>
+        <div><b>${product.name}</b><span>${product.category || product.tag || "Catálogo"}</span></div>
       </button>
     `).join("");
 
@@ -366,7 +378,7 @@ if (catalogModal) {
   };
 
   const selectProduct = (productId, { updateUrl = true } = {}) => {
-    const collection = catalogData.collections[activeCollection];
+    const collection = getCollection(activeCollection);
     const product = collection?.products.find((item) => item.id === productId);
     if (!product) return;
     const specs = { ...catalogData.defaults.specs, ...product.specs };
@@ -376,7 +388,7 @@ if (catalogModal) {
     });
     detailImage.src = getProductImage(product);
     detailImage.alt = `${product.name} em EPS`;
-    detailCollection.textContent = `${collection.name} / ${product.tag}`;
+    detailCollection.textContent = `${collection.name} / ${product.category || product.tag || "Catálogo"}`;
     detailName.textContent = product.name;
     detailDescription.textContent = product.description;
     detailMaterial.textContent = specs.material;
@@ -425,12 +437,29 @@ if (catalogModal) {
   const initCatalog = async () => {
     try {
       catalogData = await catalogRepository.getCatalog();
-      allProducts = Object.entries(catalogData.collections).flatMap(([collectionId, collection]) =>
-        collection.products.map((product) => ({ ...product, collectionId }))
+      const collections = getCollections();
+      allProducts = collections.flatMap((collection) =>
+        collection.products.map((product) => ({ ...product, collectionId: collection.id }))
       );
 
+      const collectionGrid = document.querySelector("[data-collection-grid]");
+      if (collectionGrid) {
+        collectionGrid.innerHTML = collections.map((collection, index) => `
+          <article class="piece-card piece-card--${["blue", "yellow", "pink"][index % 3]}" data-reveal data-collection-card="${collection.id}" role="button" tabindex="0" aria-label="Abrir ${collection.name}">
+            <div class="piece-card__meta"><span>${String(index + 1).padStart(2, "0")}</span><b data-collection-name>${collection.name}</b><i data-collection-count></i></div>
+            <div class="collection-preview" data-collection-preview aria-hidden="true"></div>
+            <p class="piece-card__description" data-collection-description>${collection.description}</p>
+            <span class="collection-trigger">Ver coleção <span>↗</span></span>
+          </article>
+        `).join("");
+        collectionGrid.querySelectorAll("[data-reveal]").forEach((item, itemIndex) => {
+          item.style.transitionDelay = `${Math.min(itemIndex * 90, 360)}ms`;
+          revealObserver.observe(item);
+        });
+      }
+
       document.querySelectorAll("[data-collection-card]").forEach((card) => {
-        const collection = catalogData.collections[card.dataset.collectionCard];
+        const collection = getCollection(card.dataset.collectionCard);
         if (!collection) return;
         const count = collection.products.length;
         card.querySelector("[data-collection-name]").textContent = collection.name;
@@ -455,7 +484,7 @@ if (catalogModal) {
       const applyCatalogRoute = () => {
         const catalogHash = window.location.hash.match(/^#catalogo-(.+)$/);
         const productHash = window.location.hash.match(/^#produto-(.+)$/);
-        if (catalogHash && catalogData.collections[catalogHash[1]]) {
+        if (catalogHash && getCollection(catalogHash[1])) {
           openCollection(catalogHash[1], { updateUrl: false });
         } else if (productHash) {
           const product = allProducts.find((item) => item.id === productHash[1]);
