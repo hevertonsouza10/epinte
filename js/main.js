@@ -10,6 +10,45 @@ fetch("assets/data/site-content.json")
       const value = content[element.dataset.content];
       if (typeof value === "string" && value.trim()) element.textContent = value;
     });
+    document.querySelectorAll("[data-href-content]").forEach((element) => {
+      const value = content[element.dataset.hrefContent];
+      if (typeof value === "string" && value.trim()) element.href = value;
+    });
+    const whatsappNumber = String(content.whatsappNumber || "").replace(/\D/g, "");
+    if (whatsappNumber) {
+      document.querySelectorAll('a[href^="https://wa.me/"], .whatsapp-float, .footer__links a:nth-child(2), .contact-section__actions a.button').forEach((element) => {
+        element.href = `https://wa.me/${whatsappNumber}`;
+      });
+    }
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    emailLinks.forEach((element) => {
+      if (content.contactEmail) {
+        element.href = `mailto:${content.contactEmail}`;
+        const text = element.querySelector("p");
+        if (text) text.textContent = content.contactEmail;
+      }
+    });
+    if (content.instagramUrl) {
+      document.querySelectorAll(".contact-section__social, .footer__links a:first-child").forEach((element) => {
+        element.href = content.instagramUrl;
+      });
+    }
+    if (content.address) {
+      document.querySelectorAll(".contact-list a:first-child p, .footer__company span:first-child").forEach((element) => {
+        if (element.tagName === "P") element.textContent = content.address;
+        else element.lastChild.textContent = content.address;
+      });
+    }
+    if (content.addressUrl) {
+      document.querySelectorAll(".contact-list a:first-child, .contact-map > a").forEach((element) => {
+        element.href = content.addressUrl;
+      });
+    }
+    if (content.businessHours) document.querySelector(".contact-list__item p").textContent = content.businessHours;
+    if (content.cnpj) document.querySelector(".footer__company span:nth-child(2)").lastChild.textContent = content.cnpj;
+    if (content.footerAbout) document.querySelector(".footer__about p").textContent = content.footerAbout;
+    if (content.footerAboutDetail) document.querySelector(".footer__about span").textContent = content.footerAboutDetail;
+    if (content.footerCopyright) document.querySelector("footer small").textContent = content.footerCopyright;
   })
   .catch((error) => console.warn(error));
 

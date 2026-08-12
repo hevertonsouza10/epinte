@@ -444,6 +444,47 @@ content:
         label: Linha destacada do título final
         type: string
         required: true
+      - name: whatsappNumber
+        label: Numero do WhatsApp
+        type: string
+        required: true
+        description: "Numero completo com codigo do pais e DDD, somente numeros. Exemplo: 5551999999999."
+      - name: contactEmail
+        label: E-mail comercial
+        type: string
+        required: true
+      - name: instagramUrl
+        label: Endereco do Instagram
+        type: string
+        required: true
+      - name: address
+        label: Endereco exibido
+        type: string
+        required: true
+      - name: addressUrl
+        label: Link do endereco no mapa
+        type: string
+        required: true
+      - name: businessHours
+        label: Horario de atendimento
+        type: string
+        required: true
+      - name: cnpj
+        label: CNPJ
+        type: string
+        required: true
+      - name: footerAbout
+        label: Frase do rodape
+        type: string
+        required: true
+      - name: footerAboutDetail
+        label: Complemento do rodape
+        type: text
+        required: true
+      - name: footerCopyright
+        label: Texto de copyright
+        type: string
+        required: true
       - name: finalButton
         label: Texto do botão final
         type: string
