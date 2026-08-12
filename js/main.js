@@ -500,6 +500,24 @@ if (catalogModal) {
           item.style.transitionDelay = `${Math.min(itemIndex * 90, 360)}ms`;
           revealObserver.observe(item);
         });
+        const carousel = document.querySelector("[data-collection-carousel]");
+        const previousButton = carousel?.querySelector(".collection-carousel__arrow--prev");
+        const nextButton = carousel?.querySelector(".collection-carousel__arrow--next");
+        const updateCarouselButtons = () => {
+          if (!previousButton || !nextButton) return;
+          const maxScroll = collectionGrid.scrollWidth - collectionGrid.clientWidth - 2;
+          previousButton.disabled = collectionGrid.scrollLeft <= 2;
+          nextButton.disabled = collectionGrid.scrollLeft >= maxScroll;
+        };
+        const scrollCollections = (direction) => {
+          const card = collectionGrid.querySelector(".piece-card");
+          collectionGrid.scrollBy({ left: direction * ((card?.offsetWidth || collectionGrid.clientWidth) + 16), behavior: "smooth" });
+        };
+        previousButton?.addEventListener("click", () => scrollCollections(-1));
+        nextButton?.addEventListener("click", () => scrollCollections(1));
+        collectionGrid.addEventListener("scroll", updateCarouselButtons, { passive: true });
+        window.addEventListener("resize", updateCarouselButtons);
+        updateCarouselButtons();
       }
 
       document.querySelectorAll("[data-collection-card]").forEach((card) => {
