@@ -13,6 +13,22 @@ O site usa o Pages CMS para permitir que uma pessoa autorizada edite produtos, i
 
 O Pages CMS grava as alterações diretamente no GitHub. Para o site atualizar sozinho, a hospedagem precisa estar conectada ao mesmo repositório e fazer uma nova publicação após cada commit.
 
+## Adicionar uma categoria
+
+1. Abra **Produtos e coleções**.
+2. Use **Categorias do catálogo** e clique para adicionar um item.
+3. Informe um identificador simples, como `natureza`, e o nome que será exibido.
+4. Ao cadastrar produtos, informe esse identificador no campo **Categoria do catálogo**.
+
+## Adicionar uma coleção
+
+1. Abra **Produtos e coleções**.
+2. Use **Novas coleções** e clique para adicionar um item.
+3. Informe um identificador único, o nome e a descrição da coleção.
+4. Dentro da coleção, adicione os produtos normalmente.
+
+A nova coleção será exibida automaticamente na seção de peças do site depois da publicação.
+
 ## Adicionar um produto
 
 1. Abra **Produtos e coleções**.
