@@ -6,6 +6,13 @@ media:
     extensions: [png, jpg, jpeg, webp]
     categories: [image]
     rename: safe
+  - name: catalog
+    label: Arquivo do catalogo
+    input: assets/catalog
+    output: assets/catalog
+    extensions: [pdf]
+    categories: [document]
+    rename: safe
 
 content:
   - name: catalog
@@ -485,6 +492,15 @@ content:
         label: Texto de copyright
         type: string
         required: true
+      - name: catalogFile
+        label: Arquivo do catalogo para download
+        type: file
+        description: "Envie um PDF. Ele aparecera no botao Catalogo do cabecalho."
+        options:
+          media: catalog
+          extensions: [pdf]
+          categories: [document]
+          rename: safe
       - name: finalButton
         label: Texto do botão final
         type: string

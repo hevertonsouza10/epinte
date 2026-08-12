@@ -14,6 +14,11 @@ fetch("assets/data/site-content.json")
       const value = content[element.dataset.hrefContent];
       if (typeof value === "string" && value.trim()) element.href = value;
     });
+    const catalogLink = document.querySelector("[data-catalog-link]");
+    if (catalogLink && typeof content.catalogFile === "string" && content.catalogFile.trim()) {
+      catalogLink.href = content.catalogFile;
+      catalogLink.hidden = false;
+    }
     const whatsappNumber = String(content.whatsappNumber || "").replace(/\D/g, "");
     if (whatsappNumber) {
       document.querySelectorAll('a[href^="https://wa.me/"], .whatsapp-float, .footer__links a:nth-child(2), .contact-section__actions a.button').forEach((element) => {
